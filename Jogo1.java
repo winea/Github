@@ -1,6 +1,5 @@
 
 
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -17,7 +16,7 @@ class Jogo extends JFrame implements ActionListener {
 		int x9=9, x8=8, x6=6, x5=5, x2=2;
 		int ok;
 		Container frame;
-		int soma=0, somad=0, somae=0;
+		int soma=0, somad, somae;
 		int [][] m = new int [4][4];
 		
 		Jogo( ) {
@@ -53,7 +52,7 @@ class Jogo extends JFrame implements ActionListener {
 		for(int i=0;i<4;i++){
 			int y=100;
 			for (int j=0;j<4;j++){
-				b[i][j]=new JButton(" ");
+				b[i][j]=new JButton("");
 				b[i][j].addActionListener(this);
 				getContentPane().add(b[i][j]).setBounds(x,y,60,60);
 				y=y+100;
@@ -112,52 +111,46 @@ class Jogo extends JFrame implements ActionListener {
  		}
 	}
 			for(i=0;i<4;i++){
-					soma=0;
  				for(j=0;j<4;j++){
  
  					if(e.getSource() == b[i][j] && ok == 9){
-						
+						m[i][j]=x9;
  						String n = Integer.toString(x9);
  						b[i][j].setText(n);
  						ok=-1;
  						qt9 --;
- 						m[i][j]=x9;
  					}
  					
 					 else if(e.getSource() == b[i][j] && ok == 8){
- 						
+ 						m[i][j]=x8;
  						String n = Integer.toString(x8);
  						b[i][j].setText(n);
  						ok=-1;
  						qt8 --;
- 						m[i][j]=x8;
  					}
  					
  					 else if(e.getSource() == b[i][j] && ok == 6){
- 						
+ 						m[i][j]=x6;
  						String n = Integer.toString(x6);
  						b[i][j].setText(n);
  						ok=-1;
  						qt6 --;
- 						m[i][j]=x6;
  					}
  					
 					  else if(e.getSource() == b[i][j] && ok == 5){
- 						
+ 						m[i][j]=x5;
  						String n = Integer.toString(x5);
  						b[i][j].setText(n);
  						ok=-1;
  						qt5 --;
- 						m[i][j]=x5;
  					}
  					
 					  else if(e.getSource() == b[i][j] && ok == 2){
- 						
+ 						m[i][j]=x2;
  						String n = Integer.toString(x2);
  						b[i][j].setText(n);
  						ok=-1;
  						qt2 --;
- 						m[i][j]=x2;
  					}
  					
 					if(e.getSource() == b[i][j] && ok==0){
@@ -165,54 +158,18 @@ class Jogo extends JFrame implements ActionListener {
 						JOptionPane.ERROR_MESSAGE);
  					}
  					
- 				    soma += m[j][i];
- 					System.out.print(m[j][i]+" ");
-					}
-					System.out.println( "soma:  "+soma);
-					System.out.println();
-						
-			}
  					
-			System.out.println("\n\n");
-					somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
- 					somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
- 				
- 					System.out.println( "somad:  "+somad );
- 					System.out.println( "somae:  " +somae  );
- 						
- 						
-					/*for(i=0;i<4;i++){
-					soma=0;
-					for(j=0;j<4;j++){
-					
- 					soma = soma + m[i][j];
- 					System.out.println( m[i][j] + " ");
-				}
-			System.out.println( );
-			}
-			
- 					somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
- 					somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
- 					System.out.println( "somad:  "+somad );
- 					System.out.println( "somae:  " +somae  );
- 					
- 					if (soma>28 || somad>28 || somae>28){
+ 					/*if (soma>28 || somad>28 || somae>28){
 						JOptionPane.showMessageDialog(frame, "Escolha outro valor", "Limite atingido", 
 						JOptionPane.ERROR_MESSAGE);
 						
-					}
-	*/
-	
-				
-				
+					}*/
+ 					
+				}
 			}
-			 
+		}	 
 		
-	
-
-					
-				
-
+	}
 		
 	/*public void Score() {
    if (){
@@ -232,5 +189,20 @@ class Jogo extends JFrame implements ActionListener {
 			new Jogo( );
 			
 			
+			/*for(i=0;i<4;i++){
+					soma=0;
+					for(j=0;j<4;j++){
+					
+ 					soma = soma + m[i][j];
+ 					System.out.println( " "+ m[i][j]);
+				}
+				System.out.println(  );
+			}
+ 					somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
+ 					somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
+*/
+
+
+
 }
 }
