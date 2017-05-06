@@ -5,6 +5,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 
 class Jogo extends JFrame implements ActionListener {
+
+		//teste1
+		
 		JButton [][]b;
 		JButton bt1,bt2,bt3,bt4,bt5;
 		JLabel l1,l2;
