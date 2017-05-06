@@ -7,15 +7,22 @@ import javax.swing.event.*;
 class Jogo extends JFrame implements ActionListener {
 
 		JButton [][]b;
-		JButton bt1,bt2,bt3,bt4,bt5;
+		JButton bt9,bt8,bt6,bt5,bt2;
 		JLabel l1,l2;
 		JPanel p;
 		JPanel tab;
 
-		int a = 9;
-		int qtda = 6;
-		int qtdc = 3;
-		int c = 8;
+		int x9 = 9;
+		int x8 = 8;
+		int x6 = 6;
+		int x5 = 5;
+		int x2 = 2;
+		int qtd9 = 6;
+		int qtd8 = 3;
+		int qtd6 = 2;
+		int qtd5 = 4;
+		int qtd2 = 1;
+		
 		int confirma;
 		int i,j;
 
@@ -32,17 +39,17 @@ class Jogo extends JFrame implements ActionListener {
 		public void Tela(){
 		JPanel p = new JPanel(new FlowLayout());
 		p.add(l1 = new JLabel ("   Player 1: 0      "));
-		p.add(bt1 = new JButton("9"));  
-		p.add(bt2 = new JButton("8"));
-		p.add(bt3 = new JButton("6"));
-		p.add(bt4 = new JButton("5"));
-		p.add(bt5 = new JButton("2"));
+		p.add(bt9 = new JButton("9"));  
+		p.add(bt8 = new JButton("8"));
+		p.add(bt6 = new JButton("6"));
+		p.add(bt5 = new JButton("5"));
+		p.add(bt2 = new JButton("2"));
 		p.add(l2 = new JLabel ("       Player 2: 0    "));
-		bt1.addActionListener(this);
-		bt2.addActionListener(this);
-		bt3.addActionListener(this);
-		bt4.addActionListener(this);
+		bt9.addActionListener(this);
+		bt8.addActionListener(this);
+		bt6.addActionListener(this);
 		bt5.addActionListener(this);
+		bt2.addActionListener(this);
 		getContentPane().add(p,BorderLayout.NORTH );
 		p.setBackground(Color.cyan);
 	    
@@ -69,50 +76,82 @@ class Jogo extends JFrame implements ActionListener {
 	
 	public void actionPerformed (ActionEvent e) {
 		
-		if (e.getSource()==bt1){
+		if (e.getSource()==bt9){
 
-			if(qtda > 0){
-				confirma = 1;
-			}else if(qtda==0){
+			if(qtd9 > 0){
+				confirma = 9;
+			}else if(qtd9==0){
 				confirma = 0;
 			}
 		} 
 
-		if (e.getSource()==bt2) {	
+		if (e.getSource()==bt8) {	
 				
-			if(qtdc > 0){
-				confirma = 2;
-			}else if(qtdc ==0){
+			if(qtd8 > 0){
+				confirma = 8;
+			}else if(qtd8 ==0){
 				confirma = 0;
 			}
 
 		}
 
-		if (e.getSource()==bt3) {		
+		if (e.getSource()==bt6) {		
 			
-		}
-
-		if (e.getSource()==bt4) {	
-			
+			if(qtd6 > 0){
+				confirma = 6;
+			}else if(qtd6 ==0){
+				confirma = 0;
+			}
 		}
 
 		if (e.getSource()==bt5) {	
 			
+			if(qtd5 > 0){
+				confirma = 5;
+			}else if(qtd5 ==0){
+				confirma = 0;
+			}
+
+		}
+
+		if (e.getSource()==bt2) {	
+			
+			if(qtd2 > 0){
+				confirma = 2;
+			}else if(qtd2 ==0){
+				confirma = 0;
+			}
+
 		}
 		 
 			for(i=0;i<4;i++){
 				for(j=0;j<4;j++){
 
-					if(e.getSource() == b[i][j] && confirma == 1){
+					if(e.getSource() == b[i][j] && confirma == 9){
 
-						String teste = Integer.toString(a);
+						String teste = Integer.toString(x9);
 						b[i][j].setText(teste);
-						qtda --;
+						qtd9 --;
+					}else if(e.getSource() == b[i][j] && confirma == 8){
+						
+						String teste = Integer.toString(x8);
+						b[i][j].setText(teste);
+						qtd8 --;
+					}else if(e.getSource() == b[i][j] && confirma == 6){
+						
+						String teste = Integer.toString(x6);
+						b[i][j].setText(teste);
+						qtd6 --;
+					}else if(e.getSource() == b[i][j] && confirma == 5){
+						
+						String teste = Integer.toString(x5);
+						b[i][j].setText(teste);
+						qtd5 --;
 					}else if(e.getSource() == b[i][j] && confirma == 2){
 						
-						String teste = Integer.toString(c);
+						String teste = Integer.toString(x2);
 						b[i][j].setText(teste);
-						qtdc --;
+						qtd2 --;
 					}
 						
 					if(e.getSource() == b[i][j] && confirma==0){
