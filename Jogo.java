@@ -6,14 +6,21 @@ import javax.swing.event.*;
 
 class Jogo extends JFrame implements ActionListener {
 
-		//teste1
-		
 		JButton [][]b;
 		JButton bt1,bt2,bt3,bt4,bt5;
 		JLabel l1,l2;
 		JPanel p;
 		JPanel tab;
-		
+
+		int a = 9;
+		int qtda = 6;
+		int qtdc = 3;
+		int c = 8;
+		int confirma;
+		int i,j;
+
+		Container frame;
+
 		
 		Jogo( ) {
 		super("Jogo Soma 28");
@@ -45,7 +52,7 @@ class Jogo extends JFrame implements ActionListener {
 
 		int x =100;
 		for(int i=0;i<4;i++){
-			int y=100;
+			int y=100;         
 			for (int j=0;j<4;j++){
 				b[i][j]=new JButton("");
 				b[i][j].addActionListener(this);
@@ -61,36 +68,70 @@ class Jogo extends JFrame implements ActionListener {
 	}
 	
 	public void actionPerformed (ActionEvent e) {
-		if (e.getSource()==bt1) {
-			
-			
+		
+		if (e.getSource()==bt1){
+
+			if(qtda > 0){
+				confirma = 1;
+			}else if(qtda==0){
+				confirma = 0;
 			}
-		
-		((JButton)e.getSource()).setEnabled(false);
-		setBackground( Color.red );
-		JOptionPane.showMessageDialog(this, ((JButton) e.getSource()).getText()+" foi clicado");    
-		
-		
-		((JButton)e.getSource()).setText(" oi");   
-		setBackground( Color.red );
- 	  // painel2.setBackground( Color.blue );      
-	}       
-		
-	/*public void Score() {
-   if (){
-   l1= l1+100;
-	}
-   else {
-   l2= l2+100;
-	}
-	l1.setBounds(5, 5, WIDTH, HEIGHT);
-	l1.setText("Score: " + l1);
-	l2.setBounds(5, 5, WIDTH, HEIGHT);
-	l2.setText("Score: " + l2);
-  
-	}
-	*/
-	static public void main(String[] args) {
-			new Jogo( );
- }
+		} 
+
+		if (e.getSource()==bt2) {	
+				
+			if(qtdc > 0){
+				confirma = 2;
+			}else if(qtdc ==0){
+				confirma = 0;
+			}
+
+		}
+
+		if (e.getSource()==bt3) {		
+			
+		}
+
+		if (e.getSource()==bt4) {	
+			
+		}
+
+		if (e.getSource()==bt5) {	
+			
+		}
+		 
+			for(i=0;i<4;i++){
+				for(j=0;j<4;j++){
+
+					if(e.getSource() == b[i][j] && confirma == 1){
+
+						String teste = Integer.toString(a);
+						b[i][j].setText(teste);
+						qtda --;
+					}else if(e.getSource() == b[i][j] && confirma == 2){
+						
+						String teste = Integer.toString(c);
+						b[i][j].setText(teste);
+						qtdc --;
+					}
+						
+					if(e.getSource() == b[i][j] && confirma==0){
+						JOptionPane.showMessageDialog(frame, "Escolha outro valor", "Limite atingido",
+                    	JOptionPane.ERROR_MESSAGE);
+					}
+								
+		      }
+			}
+
+
 }
+
+		// if ( e.getSource() == b[0][0]){
+		// 	String teste = Integer.toString(a);
+        //     b[0][0].setText(teste);
+		//     }       
+	public static void main(String[] args) {
+			new Jogo( );
+   }
+}
+
