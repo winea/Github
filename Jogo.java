@@ -262,7 +262,7 @@ class Jogo extends JFrame implements ActionListener {
 				 b[1][1].setBackground(Color.green);
 				 b[2][2].setBackground(Color.green);
 				 b[3][3].setBackground(Color.green);
-				 Score();		
+				 DScore();		
 			}		
 			
 			if (somae == 28 && player == 1) {			
@@ -270,7 +270,7 @@ class Jogo extends JFrame implements ActionListener {
 				b[2][1].setBackground(Color.green);
 				b[1][2].setBackground(Color.green);
 				b[0][3].setBackground(Color.green);
-				Score();
+				DScore();
 			}
 			
 			
@@ -392,7 +392,6 @@ class Jogo extends JFrame implements ActionListener {
 	
 	static public void main(String[] args) {  new Jogo( );
 	
-	 	System.out.println("Teste do teste xD");
 	 }
 	
 }
