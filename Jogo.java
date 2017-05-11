@@ -199,31 +199,24 @@ class Jogo extends JFrame implements ActionListener {
 	public void verifica_anterior(int pos_linha,int pos_coluna){
 
 		jButText = b[pos_linha][pos_coluna].getText();
-		
 
-		if(jButText== " "){ 
+		if(jButText.equals(" ")){
 			return;
-		}else if(jButText != " "){
-			valor_anterior = jButText;
-			
-			if(jButText=="9"){
+		}else{
+			valor_anterior = jButText;		
+			if(valor_anterior.equals("9")){
 				qt9++;
-			
-			}else if(jButText=="8"){
+			}else if(valor_anterior.equals("8")){
 				qt8++;
-			
-			}else if(jButText=="6"){
+			}else if(valor_anterior.equals("6")){
 				qt6++;
-			
-			}else if(jButText=="5"){
-				qt5++;
-			
-			}else if(jButText=="2"){
+			}else if(valor_anterior.equals("5")){
+				qt5++;	
+			}else if(valor_anterior.equals("2")){
 				qt2++;
 				
 			}
 		}
-
 	}
 
 	public void soma28 (int linha, int coluna){		
@@ -292,12 +285,12 @@ class Jogo extends JFrame implements ActionListener {
 	   if (player == 1){
 		   jogador1= jogador1+100;
 	   }
-	   else {
+	   else{
 		   jogador2= jogador2+100;
 	   }
 		l1.setText(Integer.toString(jogador1));
 		l2.setText(Integer.toString(jogador2));
-	}
+    }
 	
 	static public void main(String[] args) {  new Jogo( ); }
 }
