@@ -22,6 +22,8 @@ class Jogo extends JFrame implements ActionListener {
 		Container frame;
 		int somal=0, somac=0, somad=0, somae=0;
 		int [][] m = new int [4][4];
+		int player =1;
+		int jogador1, jogador2;
 		
 		Jogo( ) {
 		super("Jogo Soma 28");
@@ -56,9 +58,9 @@ class Jogo extends JFrame implements ActionListener {
 		for(int i=0;i<4;i++){
 			int y=100;
 			for (int j=0;j<4;j++){
-				b[i][j]=new JButton(" ");
-				b[i][j].addActionListener(this);
-				getContentPane().add(b[i][j]).setBounds(x,y,60,60);
+				b[j][i]=new JButton(" ");
+				b[j][i].addActionListener(this);
+				getContentPane().add(b[j][i]).setBounds(x,y,60,60);
 				y=y+100;
 				}
 				x=x+100;
@@ -125,7 +127,9 @@ class Jogo extends JFrame implements ActionListener {
  						ok=-1;
  						qt9 --;
  						m[i][j]=x9;
- 						soma28();
+ 						soma28(i,j);
+ 						trocaPlayer();
+
  					}
  					
 					 else if(e.getSource() == b[i][j] && ok == 8){
@@ -135,7 +139,9 @@ class Jogo extends JFrame implements ActionListener {
  						ok=-1;
  						qt8 --;
  						m[i][j]=x8;
- 						soma28();
+ 						soma28(i,j);
+ 						trocaPlayer();
+
  					}
  					
  					 else if(e.getSource() == b[i][j] && ok == 6){
@@ -145,7 +151,9 @@ class Jogo extends JFrame implements ActionListener {
  						ok=-1;
  						qt6 --;
  						m[i][j]=x6;
- 						soma28();
+ 						soma28(i,j);
+ 						trocaPlayer();
+
  					}
  					
 					  else if(e.getSource() == b[i][j] && ok == 5){
@@ -155,7 +163,10 @@ class Jogo extends JFrame implements ActionListener {
  						ok=-1;
  						qt5 --;
  						m[i][j]=x5;
- 						soma28();
+ 						soma28(i,j);
+
+ 						trocaPlayer();
+
  					}
  					
 					  else if(e.getSource() == b[i][j] && ok == 2){
@@ -165,70 +176,93 @@ class Jogo extends JFrame implements ActionListener {
  						ok=-1;
  						qt2 --;
  						m[i][j]=x2;
- 						soma28();
+ 						soma28(i,j);
+
+ 						trocaPlayer();
+
  					}
  					
 					if(e.getSource() == b[i][j] && ok==0){
 						JOptionPane.showMessageDialog(frame, "Escolha outro valor", "Limite atingido", 
 						JOptionPane.ERROR_MESSAGE);
- 					}
- 						   	
-				 
-				 }			
-			}
-			 
-	}
-	
+ 					}// end if
+				 }// end for j	
+			}// end for i
+		}// end funcao
 					
-	public void soma28 (){
-		
-		
-		for(i=0;i<4;i++){
-			somal=0;
-			somac=0;
- 				for(j=0;j<4;j++){
-					somal += m[j][i];
-					somac += m[i][j];
- 					System.out.print(m[j][i]+" ");
- 					
-					}
-					System.out.println( "somal:  "+somal);
-					System.out.println( "somac:  "+somac);
-					System.out.println();
-						
-			}
- 					
-			System.out.println("\n\n");
+	
+	public void soma28 (int linha, int coluna){		
 			
-					somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
- 					somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
- 				
- 					System.out.println( "somad:  "+somad );
- 					System.out.println( "somae:  " +somae  );
+			// calculo da soma da linha
+			int somal = 0;
+			for(int j = 0; j < 4; j++){
+				somal += m[linha][j];
+			}
+					
+			// calculo da soma da coluna
+			int somac = 0;
+			for(int i = 0; i < 4; i++){
+				somac += m[i][coluna];
+			}
+			
+			// calculo da soma das diagonais
+			int somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
+			int somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
+		
+			System.out.println("somal:  "+somal);
+			System.out.println("somac:  "+somac);
+			System.out.println("somad:  "+somad);
+			System.out.println("somae:  "+somae);
+			
+			if(somal == 28)
+				for(int i = 0; i < 4; i++){
+					b[linha][i].setBackground(Color.green);					
+					Score();
+				}
+			
+			if(somac == 28)
+				for(int j = 0; j < 4; j++){
+					b[j][coluna].setBackground(Color.green);
+					Score();
+				}
 					
 				
-}
-		
-		
-		
-		
-	/*public void Score() {
-   if (){
-   l1= l1+100;
+			if (somad == 28) {				
+				 b[0][0].setBackground(Color.green);
+				 b[1][1].setBackground(Color.green);
+				 b[2][2].setBackground(Color.green);
+				 b[3][3].setBackground(Color.green);
+				 Score();		
+			}		
+			
+			if (somae == 28) {			
+				b[3][0].setBackground(Color.green);
+				b[2][1].setBackground(Color.green);
+				b[1][2].setBackground(Color.green);
+				b[0][3].setBackground(Color.green);
+				Score();
+			}
+			
 	}
-   else {
-   l2= l2+100;
+		
+	public void trocaPlayer(){
+		if(player == 1)
+		    player = 2;
+		else
+		    player = 1;
+	}
+
+		
+	public void Score() {
+	   if (player == 1){
+		   jogador1= jogador1+100;
+	   }
+	   else {
+		   jogador2= jogador2+100;
+	   }
+		l1.setText(Integer.toString(jogador1));
+		l2.setText(Integer.toString(jogador2));
 	}
 	
-	l1.setText("Score: " + l1);
-	
-	l2.setText("Score: " + l2);
-  
-	}
-	*/
-	static public void main(String[] args) {
-			new Jogo( );
-			
-			
-}
+	static public void main(String[] args) {  new Jogo( ); }
 }
