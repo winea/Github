@@ -389,6 +389,9 @@ class Jogo extends JFrame implements ActionListener {
 		l2.setText(Integer.toString(jogador2));
     }
 	
+	
 
-	static public void main(String[] args) {  new Jogo( );	 }
+	static public void main(String[] args) {  new Jogo( );
+		System.out.println("um teste");
+	}
 }
