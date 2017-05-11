@@ -22,7 +22,6 @@ class Jogo extends JFrame implements ActionListener {
 		String valor_anterior;
 		String jButText;
 		int jogador1, jogador2;
-		String n;
 		
 		Jogo( ) {
 		super("Jogo Soma 28");
@@ -164,9 +163,11 @@ class Jogo extends JFrame implements ActionListener {
 					  else if(e.getSource() == b[i][j] && ok == 5){
  						
 						verifica_anterior(i,j);
- 						
-						set_valorjBut(i,j,ok,x5);
-
+ 						String n = Integer.toString(x5);
+ 						b[i][j].setText(n);
+ 						ok=-1;
+ 						qt5 --;
+ 						m[i][j]=x5;
  						soma28(i,j);
 
  						trocaPlayer();
@@ -181,7 +182,6 @@ class Jogo extends JFrame implements ActionListener {
  						ok=-1;
  						qt2 --;
  						m[i][j]=x2;
-
  						soma28(i,j);
 
  						trocaPlayer();
@@ -195,32 +195,7 @@ class Jogo extends JFrame implements ActionListener {
 				 }// end for j	
 			}// end for i
 		}// end funcao
-
-	public void set_valorjBut(int pos_linha,int pos_coluna,int ok,int valor){
-
-			n = Integer.toString(valor);
- 			b[i][j].setText(n);
- 			ok=-1;
-
-			if(valor == 9){
- 			qt9 --;
-			} 
-			else if(valor == 8){
- 			qt8 --;
-			} 
-			else if(valor == 6){
- 			qt6 --;
-			} 
-			else if(valor == 5){
- 			qt5 --;
-			} 
-			else if(valor == 2){
- 			qt2 --;
-			}
-			
- 			m[i][j]=valor;
- 			
-	}		
+					
 	public void verifica_anterior(int pos_linha,int pos_coluna){
 
 		jButText = b[pos_linha][pos_coluna].getText();
