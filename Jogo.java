@@ -233,73 +233,52 @@ class Jogo extends JFrame implements ActionListener {
 			}
 			
 			// calculo da soma das diagonais
-			int somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
-			int somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
-		
+			int somad = 0;
+			int somae = 0;
+			if(linha == coluna){
+				somad = m[0][0]+m[1][1]+m[2][2]+m[3][3];
+			}else if(Math.abs(linha - coluna) == 3 || Math.abs(linha-coluna) == 1)
+				somae = m[3][0]+m[2][1]+m[1][2]+m[0][3];
+
+			
+
 			System.out.println("somal:  "+somal);
 			System.out.println("somac:  "+somac);
 			System.out.println("somad:  "+somad);
 			System.out.println("somae:  "+somae);
 			System.out.println(" ");
 			
+			Color c = Color.green;
+			if(player == 2)
+				c = Color.pink;
 			
 
-			if(somal == 28 && player == 1)		
+			if(somal == 28)		
 				for(int i = 0; i < 4; i++){
-					b[linha][i].setBackground(Color.green);					
+					b[linha][i].setBackground(c);					
 					Score();
 				}
 			
-			if(somac == 28 && player == 1)
+			if(somac == 28)
 				for(int j = 0; j < 4; j++){
-					b[j][coluna].setBackground(Color.green);
+					b[j][coluna].setBackground(c);
 					Score();
 				}
 					
 				
-			if (somad == 28 && player == 1) {				
-				 b[0][0].setBackground(Color.green);
-				 b[1][1].setBackground(Color.green);
-				 b[2][2].setBackground(Color.green);
-				 b[3][3].setBackground(Color.green);
+			if (somad == 28) {				
+				 b[0][0].setBackground(c);
+				 b[1][1].setBackground(c);
+				 b[2][2].setBackground(c);
+				 b[3][3].setBackground(c);
 				 DScore();		
 			}		
 			
-			if (somae == 28 && player == 1) {			
-				b[3][0].setBackground(Color.green);
-				b[2][1].setBackground(Color.green);
-				b[1][2].setBackground(Color.green);
-				b[0][3].setBackground(Color.green);
-				DScore();
-			}
-			
-			
-			if(somal == 28 && player == 2)		
-				for(int i = 0; i < 4; i++){
-					b[linha][i].setBackground(Color.pink);					
-					Score();
-				}
-			
-			if(somac == 28 && player == 2)
-				for(int j = 0; j < 4; j++){
-					b[j][coluna].setBackground(Color.pink);
-					Score();
-				}
-					
-				
-			if (somad == 28 && player == 2) {				
-				 b[0][0].setBackground(Color.pink);
-				 b[1][1].setBackground(Color.pink);
-				 b[2][2].setBackground(Color.pink);
-				 b[3][3].setBackground(Color.pink);
-				 DScore();		
-			}		
-			
-			if (somae == 28 && player == 2) {			
-				b[3][0].setBackground(Color.pink);
-				b[2][1].setBackground(Color.pink);
-				b[1][2].setBackground(Color.pink);
-				b[0][3].setBackground(Color.pink);
+			if (somae == 28) {			
+				b[3][0].setBackground(c);
+				b[2][1].setBackground(c);
+				b[1][2].setBackground(c);
+				b[0][3].setBackground(c);
 				DScore();
 			}
 			
@@ -387,9 +366,7 @@ class Jogo extends JFrame implements ActionListener {
 	   
 		l1.setText(Integer.toString(jogador1));
 		l2.setText(Integer.toString(jogador2));
-    }
-	
-	
+  }
 
 	static public void main(String[] args) {  new Jogo( );
 		System.out.println("um teste");
