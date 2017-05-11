@@ -378,14 +378,13 @@ class Jogo extends JFrame implements ActionListener {
 	
 	public void DPerdeScore() {
 	   if (player == 1){
-		   jogador1= jogador1-50;
+		   jogador1= jogador1-100;
 	   }
 	   if (player == 2){  
-		   jogador2= jogador2-50;
+		   jogador2= jogador2-100;
 		 }		 
-	   else{
-		   jogador2= jogador2+100;
-	   }
+	  
+	   
 		l1.setText(Integer.toString(jogador1));
 		l2.setText(Integer.toString(jogador2));
     }
