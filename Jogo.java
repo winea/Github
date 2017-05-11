@@ -8,7 +8,6 @@ import javax.swing.event.*;
 
 class Jogo extends JFrame implements ActionListener {
 
-		//teste1
 		
 		JButton [][]b;
 		JButton bt9,bt8,bt6,bt5,bt2;
@@ -129,6 +128,7 @@ class Jogo extends JFrame implements ActionListener {
  						m[i][j]=x9;
  						soma28(i,j);
  						trocaPlayer();
+ 						
 
  					}
  					
@@ -164,7 +164,6 @@ class Jogo extends JFrame implements ActionListener {
  						qt5 --;
  						m[i][j]=x5;
  						soma28(i,j);
-
  						trocaPlayer();
 
  					}
@@ -177,7 +176,6 @@ class Jogo extends JFrame implements ActionListener {
  						qt2 --;
  						m[i][j]=x2;
  						soma28(i,j);
-
  						trocaPlayer();
 
  					}
@@ -213,21 +211,24 @@ class Jogo extends JFrame implements ActionListener {
 			System.out.println("somac:  "+somac);
 			System.out.println("somad:  "+somad);
 			System.out.println("somae:  "+somae);
+			System.out.println(" ");
 			
-			if(somal == 28)
+			
+
+			if(somal == 28 && player == 1)		
 				for(int i = 0; i < 4; i++){
 					b[linha][i].setBackground(Color.green);					
 					Score();
 				}
 			
-			if(somac == 28)
+			if(somac == 28 && player == 1)
 				for(int j = 0; j < 4; j++){
 					b[j][coluna].setBackground(Color.green);
 					Score();
 				}
 					
 				
-			if (somad == 28) {				
+			if (somad == 28 && player == 1) {				
 				 b[0][0].setBackground(Color.green);
 				 b[1][1].setBackground(Color.green);
 				 b[2][2].setBackground(Color.green);
@@ -235,7 +236,7 @@ class Jogo extends JFrame implements ActionListener {
 				 Score();		
 			}		
 			
-			if (somae == 28) {			
+			if (somae == 28 && player == 1) {			
 				b[3][0].setBackground(Color.green);
 				b[2][1].setBackground(Color.green);
 				b[1][2].setBackground(Color.green);
@@ -243,6 +244,66 @@ class Jogo extends JFrame implements ActionListener {
 				Score();
 			}
 			
+			
+			if(somal == 28 && player == 2)		
+				for(int i = 0; i < 4; i++){
+					b[linha][i].setBackground(Color.pink);					
+					Score();
+				}
+			
+			if(somac == 28 && player == 2)
+				for(int j = 0; j < 4; j++){
+					b[j][coluna].setBackground(Color.pink);
+					Score();
+				}
+					
+				
+			if (somad == 28 && player == 2) {				
+				 b[0][0].setBackground(Color.pink);
+				 b[1][1].setBackground(Color.pink);
+				 b[2][2].setBackground(Color.pink);
+				 b[3][3].setBackground(Color.pink);
+				 DScore();		
+			}		
+			
+			if (somae == 28 && player == 2) {			
+				b[3][0].setBackground(Color.pink);
+				b[2][1].setBackground(Color.pink);
+				b[1][2].setBackground(Color.pink);
+				b[0][3].setBackground(Color.pink);
+				DScore();
+			}
+			
+			
+			if(somal > 28)
+				for(int i = 0; i < 4; i++){
+					b[linha][i].setBackground(Color.orange);					
+					PerdeScore();
+					
+				}
+			
+			if(somac > 28)
+				for(int j = 0; j < 4; j++){
+					b[j][coluna].setBackground(Color.orange);
+					PerdeScore();
+				}
+					
+				
+			if (somad > 28) {				
+				 b[0][0].setBackground(Color.orange);
+				 b[1][1].setBackground(Color.orange);
+				 b[2][2].setBackground(Color.orange);
+				 b[3][3].setBackground(Color.orange);
+				 DPerdeScore();		
+			}		
+			
+			if (somae > 28) {			
+				b[3][0].setBackground(Color.orange);
+				b[2][1].setBackground(Color.orange);
+				b[1][2].setBackground(Color.orange);
+				b[0][3].setBackground(Color.orange);
+				DPerdeScore();
+			}
 	}
 		
 	public void trocaPlayer(){
@@ -255,10 +316,43 @@ class Jogo extends JFrame implements ActionListener {
 		
 	public void Score() {
 	   if (player == 1){
-		   jogador1= jogador1+100;
+		   jogador1= jogador1+50;
 	   }
-	   else {
-		   jogador2= jogador2+100;
+	   if (player == 2){  
+		   jogador2= jogador2+50;
+	   }
+		l1.setText(Integer.toString(jogador1));
+		l2.setText(Integer.toString(jogador2));
+	}
+	
+	public void DScore() {
+	   if (player == 1){
+		   jogador1= jogador1+200;
+	   }
+	   if (player == 2){  
+		   jogador2= jogador2+200;
+	   }
+		l1.setText(Integer.toString(jogador1));
+		l2.setText(Integer.toString(jogador2));
+	}
+	
+	public void PerdeScore() {
+	   if (player == 1){
+		   jogador1= jogador1-25;
+	   }
+	   if (player == 2){  
+		   jogador2= jogador2-25;
+	   }
+		l1.setText(Integer.toString(jogador1));
+		l2.setText(Integer.toString(jogador2));
+	}
+	
+	public void DPerdeScore() {
+	   if (player == 1){
+		   jogador1= jogador1-50;
+	   }
+	   if (player == 2){  
+		   jogador2= jogador2-50;
 	   }
 		l1.setText(Integer.toString(jogador1));
 		l2.setText(Integer.toString(jogador2));
