@@ -1,6 +1,3 @@
-
-
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -22,6 +19,8 @@ class Jogo extends JFrame implements ActionListener {
 		int somal=0, somac=0, somad=0, somae=0;
 		int [][] m = new int [4][4];
 		int player =1;
+		String valor_anterior;
+		String jButText;
 		int jogador1, jogador2;
 		
 		Jogo( ) {
@@ -115,12 +114,15 @@ class Jogo extends JFrame implements ActionListener {
  				ok = 0;
  		}
 	}
+
 			for(i=0;i<4;i++){
 					
  				for(j=0;j<4;j++){
  
  					if(e.getSource() == b[i][j] && ok == 9){
 						
+
+						verifica_anterior(i,j);
  						String n = Integer.toString(x9);
  						b[i][j].setText(n);
  						ok=-1;
@@ -134,6 +136,8 @@ class Jogo extends JFrame implements ActionListener {
  					
 					 else if(e.getSource() == b[i][j] && ok == 8){
  						
+						
+						verifica_anterior(i,j);
  						String n = Integer.toString(x8);
  						b[i][j].setText(n);
  						ok=-1;
@@ -146,6 +150,7 @@ class Jogo extends JFrame implements ActionListener {
  					
  					 else if(e.getSource() == b[i][j] && ok == 6){
  						
+						verifica_anterior(i,j);
  						String n = Integer.toString(x6);
  						b[i][j].setText(n);
  						ok=-1;
@@ -158,6 +163,7 @@ class Jogo extends JFrame implements ActionListener {
  					
 					  else if(e.getSource() == b[i][j] && ok == 5){
  						
+						verifica_anterior(i,j);
  						String n = Integer.toString(x5);
  						b[i][j].setText(n);
  						ok=-1;
@@ -170,6 +176,7 @@ class Jogo extends JFrame implements ActionListener {
  					
 					  else if(e.getSource() == b[i][j] && ok == 2){
  						
+						verifica_anterior(i,j); 
  						String n = Integer.toString(x2);
  						b[i][j].setText(n);
  						ok=-1;
@@ -188,7 +195,29 @@ class Jogo extends JFrame implements ActionListener {
 			}// end for i
 		}// end funcao
 					
-	
+	public void verifica_anterior(int pos_linha,int pos_coluna){
+
+		jButText = b[pos_linha][pos_coluna].getText();
+
+		if(jButText.equals(" ")){
+			return;
+		}else{
+			valor_anterior = jButText;		
+			if(valor_anterior.equals("9")){
+				qt9++;
+			}else if(valor_anterior.equals("8")){
+				qt8++;
+			}else if(valor_anterior.equals("6")){
+				qt6++;
+			}else if(valor_anterior.equals("5")){
+				qt5++;	
+			}else if(valor_anterior.equals("2")){
+				qt2++;
+				
+			}
+		}
+	}
+
 	public void soma28 (int linha, int coluna){		
 			
 			// calculo da soma da linha
@@ -353,10 +382,13 @@ class Jogo extends JFrame implements ActionListener {
 	   }
 	   if (player == 2){  
 		   jogador2= jogador2-50;
+		 }		 
+	   else{
+		   jogador2= jogador2+100;
 	   }
 		l1.setText(Integer.toString(jogador1));
 		l2.setText(Integer.toString(jogador2));
-	}
+    }
 	
 	static public void main(String[] args) {  new Jogo( ); }
 }
